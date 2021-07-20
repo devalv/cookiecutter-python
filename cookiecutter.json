@@ -1,0 +1,17 @@
+{
+  "full_name": "Aleksei Devyatkin",
+  "email": "aleksei@devyatkin.dev",
+  "version": "0.1.0",
+  "project_name": "YAPP",
+  "project_slug": "yapp",
+  "project_short_description": "Cookiecutter Python 3 boilerplate.",
+  "github_username": "{{ cookiecutter.github_username }}",
+  "pypi_username": "{{ cookiecutter.github_username }}",
+  "_copy_without_render": [
+        "*lint.yml",
+        "*codeql-analysis.yml",
+        "*build-deb-binary.yml",
+        "*pypi-upload.yml",
+        "*tests.yml"
+  ]
+}

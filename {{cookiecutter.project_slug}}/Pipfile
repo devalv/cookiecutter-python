@@ -1,0 +1,30 @@
+# pipenv lock -r --dev-only > dev-requirements.txt && pipenv lock -r > requirements.txt
+
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+ujson = "==4.*"
+httpx = "*"
+uvloop = "*"
+
+[dev-packages]
+coverage = "==5.*"
+codecov = "==2.*"
+pytest = "==6.*"
+pytest-cov = "==2.*"
+pytest-flake8 = "==1.*"
+requests = "==2.*"
+pre-commit = "==2.*"
+async-asgi-testclient = "==1.*"
+pytest-asyncio = "==0.*"
+pytest-alembic = "==0.*"
+snapshottest = "*"
+pytest-dotenv = "*"
+pretty_errors = "==1.*"
+pytest-httpx = "*"
+
+[requires]
+python_version = "3.9"

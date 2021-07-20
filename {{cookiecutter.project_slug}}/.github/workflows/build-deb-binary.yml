@@ -1,0 +1,46 @@
+# Manually build deb-package.
+
+name: Build deb binary package
+
+on:
+  workflow_dispatch:
+    inputs:
+      python-version:
+        description: 'Specify python version'
+        required: true
+        default: '3.9'
+      build-version:
+        description: 'Specify build version'
+        required: true
+
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build-deb:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.head_ref }}
+    - name: Set up Python ${{ github.event.inputs.python-version }}
+      uses: actions/setup-python@v1
+      with:
+        python-version: ${{ github.event.inputs.python-version }}
+    - name: Install dependencies to pipenv
+      run: |
+        python -m pip install pipenv
+        pipenv install --dev
+    - name: Generate pipenv lock
+      run: |
+        pipenv lock --dev --requirements > dev_requirements.txt
+        pipenv lock --requirements > requirements.txt
+    - name: Install dependencies via pip
+      run: |
+        python -m pip install -r dev_requirements.txt
+        python -m pip install -r requirements.txt
+    - name: build deb package
+      run: sh make_binary.sh -v ${{ github.event.inputs.build-version }}
+    - uses: actions/upload-artifact@v2
+      with:
+        name: deb-package
+        path: ${{ github.event.inputs.package-name }}-${{ github.event.inputs.build-version }}.deb
