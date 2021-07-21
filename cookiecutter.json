@@ -6,7 +6,6 @@
   "project_slug": "yapp",
   "project_short_description": "Cookiecutter Python 3 boilerplate.",
   "github_username": "{{ cookiecutter.github_username }}",
-  "pypi_username": "{{ cookiecutter.github_username }}",
   "_copy_without_render": [
         "*lint.yml",
         "*codeql-analysis.yml",
