@@ -2,6 +2,9 @@
 import asyncio
 import logging
 
+import uvloop
+
+
 logging.basicConfig(level=logging.DEBUG)
 
 
@@ -10,4 +13,5 @@ async def simple_main():
 
 
 if __name__ == '__main__':
+    asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
     asyncio.run(simple_main())
