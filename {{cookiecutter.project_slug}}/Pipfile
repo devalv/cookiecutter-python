@@ -6,7 +6,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-ujson = "==4.*"
+ujson = "==5.*"
 httpx = "*"
 uvloop = "*"
 
